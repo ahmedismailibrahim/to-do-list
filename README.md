@@ -105,7 +105,8 @@ This project is created to practice CRUD operations and understand how frontend 
               git remote -v / view fetch and push repo
               git config --global user.name
               git config --global credential.helper store // save new credential
-                 
+              git rm -r --cached client/node_modules server/node_modules // delete packages 
+
 
 2. Initialize backend project (Node.js & Express)
 3. Connect backend to MongoDB
