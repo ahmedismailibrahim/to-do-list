@@ -68,7 +68,8 @@ This project is created to practice CRUD operations and understand how frontend 
 
 ## 🛠 Developer Workflow
 
-1. Set up development environment
+1. Set up development environment :
+
         backend --> 
             npm init -y
             npm install express mongoose dotenv cors
@@ -85,26 +86,26 @@ This project is created to practice CRUD operations and understand how frontend 
             npm install --save-dev concurrently // run both back and front
             npm run dev
 
-         pushing on git :::
+         pushing on git first once :
+
              git init 
+             delete windows credentials for git:https:github.com
+             create now tokens
              git remote add origin https:repo
+             new sign with tokens
+             git branch -M main  // insted of master branch
+             git pull origin main--allow-unrelated-histories press Esc the type :qa or :wq // if github already has files 
+
 
              git add . 
              git commit -m "message"
-             git branch -M main  // insted of master branch
              git push -u origin main // if the first one else git push
 
-              git status   // fetch and push repo 
-              git remote -v 
+              git status   
+              git remote -v / view fetch and push repo
               git config --global user.name
-              git config --global credential.helper store
+              git config --global credential.helper store // save new credential
                  
-
-
-
-
-
-
 
 2. Initialize backend project (Node.js & Express)
 3. Connect backend to MongoDB
