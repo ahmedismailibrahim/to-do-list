@@ -104,15 +104,23 @@ This project is created to practice CRUD operations and understand how frontend 
 
              git add .
              git commit -m "message"
-             git status 
+             git status
              git push -u origin main // if the first one else git push
 
-            
+
              git rm -r --cached client/node_modules server/node_modules // delete packages
 
 2.  Initialize backend project server (Node.js & Express) :
-          
+
+    -can using env-cmd insted of dotenv // and we'r using this bacause node can't  read .env or any files by itself
+        npm i -g env-cmd
+        "dev": "env-cmd -f .env nodemon app.js"
+        npx run dev
+
 3.  Connect backend to MongoDB
+
+        using mongodb compass and atlas 
+
 4.  Create REST API endpoints
 5.  Test API using Postman / browser
 6.  Initialize React frontend
