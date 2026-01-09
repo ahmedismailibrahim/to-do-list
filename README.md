@@ -97,19 +97,21 @@ This project is created to practice CRUD operations and understand how frontend 
              new sign with tokens
              git branch -M main  // insted of master branch
              git pull origin main--allow-unrelated-histories press Esc the type :qa or :wq // if github already has files
+             git remote -v / view fetch and push repo
+             git config --global user.name
+             git config --global credential.helper store // save new credential
 
 
              git add .
              git commit -m "message"
+             git status 
              git push -u origin main // if the first one else git push
 
-             git status
-             git remote -v / view fetch and push repo
-             git config --global user.name
-             git config --global credential.helper store // save new credential
+            
              git rm -r --cached client/node_modules server/node_modules // delete packages
 
-2.  Initialize backend project (Node.js & Express)
+2.  Initialize backend project server (Node.js & Express) :
+          
 3.  Connect backend to MongoDB
 4.  Create REST API endpoints
 5.  Test API using Postman / browser
