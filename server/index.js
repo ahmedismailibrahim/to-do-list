@@ -1,4 +1,4 @@
-
+// this is 'to do list' app practice on operaions CRUD
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -8,7 +8,7 @@ const mongoose =require('mongoose');
 const app = express();
 
 app.use(cors()); // solve problems of connecting front-end and back-end error "Access-Control-Allow-Origin"
-app.use(express.json());  //
+app.use(express.json());  // to parse json data from request body instead of user body-parser
 
 dotenv.config();// to read file .env becaue node can't reat itself
 
@@ -27,7 +27,8 @@ mongoose.connect(
   console.error('Error connecting to MongoDB',err);
 }); 
 
- 
+// routes (endpoints)
+  
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
