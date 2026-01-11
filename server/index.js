@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 5000,
 
 // connect to dp
 mongoose.connect(
-  `mongodb+srv://${User}:${Password}@mern.n6wzmmq.mongodb.net/?appName=MERN`
+  `mongodb+srv://${User}:${Password}@mern.n6wzmmq.mongodb.net/to-do-list?appName=MERN`
 ).then(() => {
   console.log('Connected to MongoDB');
 }).catch((err) => {
@@ -28,7 +28,8 @@ mongoose.connect(
 }); 
 
 // routes (endpoints)
-  app.use('/todos', require('./routes/todos'));
+app.use('/', require('./routes/todos'));
+  
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

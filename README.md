@@ -80,7 +80,7 @@ This project is created to practice CRUD operations and understand how frontend 
             mkdir models routes controllers
 
         frontend -->
-            npx create-react-app
+            npx create-react-app name
             npm install axios react-router-dom
                 "axios → HTTP requests to backend
                 react-router-dom → Routing & pages"
@@ -122,8 +122,10 @@ This project is created to practice CRUD operations and understand how frontend 
         using mongodb compass and atlas 
 
 4.  Create REST API endpoints
-5.  Test API using Postman / browser
+     Test API using Postman 
+
 6.  Initialize React frontend
+
 7.  Build UI components
 8.  Connect frontend to backend APIs
 9.  Handle state and UI updates

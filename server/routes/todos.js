@@ -1,10 +1,18 @@
 const router = require('express').Router(); 
 const Todo = require('../models/todo');
+
 // Create a new todo
-router.post('/', async (req, res) => {
-    const todo = await Todo.create(req.body);
-    res.status(201).json(todo);
+router.post("/", async (req, res) => {
+  try {
+    const todo = new Todo(req.body);
+    await todo.save();
+    res.json(todo);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
 });
+
 // Get all todos
 router.get('/', async (req, res) => {
     const todos = await Todo.find();
@@ -24,5 +32,5 @@ router.delete('/:id', async (req, res) => {
     await Todo.findByIdAndDelete(req.params.id);
     res.status(204).end();
 });
-module.exports = router;//
+module.exports = router;///
    
