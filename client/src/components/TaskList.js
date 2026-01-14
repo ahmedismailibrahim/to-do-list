@@ -21,7 +21,7 @@ function TaskList({ tasks, filter, onToggle, onDelete, onEdit }) {
     <div className="space-y-4">
       {filteredTasks.map(task => (
         <TaskItem 
-          key={task.id}
+          key={task._id}
           task={task}
           onToggle={onToggle}
           onDelete={onDelete}

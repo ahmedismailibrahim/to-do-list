@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
 import FilterBar from "./components/FilterBar";
 import FiterButton from "./components/FilterButton";
 import Header from "./components/Header";
@@ -16,26 +15,83 @@ export default function App() {
 
   const [filter, setFilter] = useState("all");
 
+  // Fetch tasks from backend (mocked here) using axios
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/");
+        setTasks(response.data);
+      } catch (error) {
+        console.error("Error fetching tasks:", error);
+      }
+    };
+    fetchTasks();
+  }, []);
+
   const addTask = (task) => {
-    setTasks([...tasks, { ...task, id: Date.now() }]);
+    try {
+      const createTask = async () => {
+        const response = await axios.post("http://localhost:5000/", task);
+        setTasks([...tasks, response.data]);
+      };
+      createTask();
+    } catch (error) {
+      console.error("Error adding task:", error);
+    }
   };
 
   const toggleTask = (id) => {
-    setTasks(
-      tasks.map((task) =>
-        task.id === id ? { ...task, completed: !task.completed } : task
-      )
-    );
+    try {
+      const toggleTaskCompletion = async () => {
+        const taskToToggle = tasks.find((task) => task._id === id);
+        const response = await axios.put(`http://localhost:5000/${id}`, {
+          ...taskToToggle,
+          completed: !taskToToggle.completed,
+        });
+        setTasks(
+          tasks.map((task) =>
+            task._id === id
+              ? { ...task, completed: response.data.completed }
+              : task
+          )
+        );
+      };
+      toggleTaskCompletion();
+    } catch (error) {
+      console.error("Error toggling task:", error);
+    }
   };
 
   const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id));
+    try {
+      const deleteTaskById = async () => {
+        await axios.delete(`http://localhost:5000/${id}`);
+        setTasks(tasks.filter((task) => task._id !== id));
+      };
+      deleteTaskById();
+    } catch (error) {
+      console.error("Error deleting task:", error);
+    }
   };
 
   const editTask = (id, updatedTask) => {
-    setTasks(
-      tasks.map((task) => (task.id === id ? { ...task, ...updatedTask } : task))
-    );
+    try {
+      const editTaskById = async () => {
+        const response = await axios.put(
+          `http://localhost:5000/${id}`,
+          updatedTask
+        );
+        setTasks(
+          tasks.map((task) =>
+            task._id === id ? { ...task, ...response.data } : task
+          )
+        );
+      };
+      editTaskById();
+    } catch (error) {
+      console.error("Error editing task:", error);
+    }
   };
 
   return (

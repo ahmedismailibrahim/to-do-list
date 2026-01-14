@@ -123,9 +123,10 @@ using mongodb compass and atlas
 
     -Create REST API endpoints and Test API using Postman
 
-##### frontend :
+#################### frontend :
 
 - Build UI components
+
   src/
   ├── App.js # Main app component with state
   └── components/
@@ -138,7 +139,7 @@ using mongodb compass and atlas
   ├── TaskItem.js # Individual task card
   └── TaskModal.js # Unified modal for Add/Edit
 
-      // bootstrap setup it's prefer to use vite  //
+      // taillwind setup it's prefer to use vite  //
 
       # create project
 
@@ -157,29 +158,36 @@ npm run dev
 
 npm install -D tailwindcss@3 postcss autoprefixer
 npx tailwindcss init -p
+
 ///////// tailwind.config.js /////////
-/** @type {import('tailwindcss').Config} \*/
-export default {
-content: [
-"./index.html",
-"./src/**/\*.{js,ts,jsx,tsx}",
-],
-theme: {
-extend: {},
-},
-plugins: [],
-}
+
+// @type {import('tailwindcss').Config} 
+
+        export default {
+        content: [
+        "./index.html",
+        "./src/**/\*.{js,ts,jsx,tsx}",
+        ],
+        theme: {
+        extend: {},
+        },
+        plugins: [],
+        }
 
 /////// index.css ////
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
----
+---------------------------------------------------
 
 8.  Connect frontend to backend APIs
 9.  Handle state and UI updates
 10. Test application functionality
+
+
+----------------------------------------------------
 
 11. Commit code to Git
 12. Push project to GitHub

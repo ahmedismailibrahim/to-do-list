@@ -1,11 +1,11 @@
-import React from 'react';
-import { useEffect, useState } from "react";
-import { Plus, Edit2, Trash2, Check, X } from 'lucide-react';
+import React from "react";
+import { useState } from "react";
+import { Plus, X } from "lucide-react";
 
 //task Modal Component (Unified for Add/Edit)
-function TaskModal({ mode = 'add', task, onClose, onSave }) {
-  const [title, setTitle] = useState(task?.title || '');
-  const [description, setDescription] = useState(task?.description || '');
+function TaskModal({ mode = "add", task, onClose, onSave }) {
+  const [title, setTitle] = useState(task?.title || "");
+  const [description, setDescription] = useState(task?.description || "");
 
   const handleSubmit = () => {
     if (title.trim()) {
@@ -14,13 +14,13 @@ function TaskModal({ mode = 'add', task, onClose, onSave }) {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSubmit();
     }
   };
 
-  const isAddMode = mode === 'add';
+  const isAddMode = mode === "add";
 
   return (
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-in fade-in duration-200">
@@ -33,9 +33,9 @@ function TaskModal({ mode = 'add', task, onClose, onSave }) {
         </button>
 
         <h2 className="text-3xl font-bold text-white mb-8">
-          {isAddMode ? 'Add New Task' : 'Edit Task'}
+          {isAddMode ? "Add New Task" : "Edit Task"}
         </h2>
-        
+
         <div>
           <input
             type="text"
@@ -46,21 +46,21 @@ function TaskModal({ mode = 'add', task, onClose, onSave }) {
             className="w-full bg-slate-700/50 text-white rounded-xl px-6 py-4 mb-5 border border-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-gray-500 text-lg transition-all duration-200"
             autoFocus
           />
-          
+
           <textarea
             placeholder="Task description (optional)..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             className="w-full bg-slate-700/50 text-white rounded-xl px-6 py-4 mb-6 h-36 border border-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-gray-500 resize-none transition-all duration-200"
           />
-          
+
           <div className="flex gap-4">
             <button
               onClick={handleSubmit}
               className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-bold transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50"
             >
               <Plus size={20} />
-              {isAddMode ? 'Add Task' : 'Save Changes'}
+              {isAddMode ? "Add Task" : "Save Changes"}
             </button>
             <button
               onClick={onClose}
