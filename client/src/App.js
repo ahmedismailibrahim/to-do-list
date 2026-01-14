@@ -1,67 +1,57 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function App() {
-  const [todos, setTodos] = useState([]);
-  const [text, setText] = useState("");
 
-  const loadTodos = async () => {
-    const res = await axios.get("http://localhost:5000/");
-    setTodos(res.data);
+import FilterBar from "./components/FilterBar";
+import FiterButton from "./components/FilterButton";
+import Header from "./components/Header";
+import StatsCards from "./components/StatsCards";
+import StatCard from "./components/StatCard";
+import TaskItem from "./components/TaskItem";
+import TaskList from "./components/TaskList";
+import TaskModal from "./components/TaskModal";
+
+export default function App() {
+  const [tasks, setTasks] = useState([]);
+
+  const [filter, setFilter] = useState("all");
+
+  const addTask = (task) => {
+    setTasks([...tasks, { ...task, id: Date.now() }]);
   };
 
-  const addTodo = async () => {
-    if (!text.trim()) return;
-    await axios.post("http://localhost:5000/", { text });
-    setText("");
-    loadTodos();
+  const toggleTask = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
   };
 
-  const toggleTodo = async (todo) => {
-    await axios.put(`http://localhost:5000/${todo._id}`, {
-      completed: !todo.completed,
-    });
-    loadTodos();
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  const deleteTodo = async (id) => {
-    await axios.delete(`http://localhost:5000/${id}`);
-    loadTodos();
+  const editTask = (id, updatedTask) => {
+    setTasks(
+      tasks.map((task) => (task.id === id ? { ...task, ...updatedTask } : task))
+    );
   };
-
-  useEffect(() => {
-    loadTodos();
-  }, []);
 
   return (
-    <div style={{ maxWidth: 500, margin: "20px auto" }}>
-      <h2>MERN Todo</h2>
-
-      <input
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="New task..."
-      />
-      <button onClick={addTodo}>Add</button>
-
-      <ul>
-        {todos.map((t) => (
-          <li key={t._id}>
-            <span
-              onClick={() => toggleTodo(t)}
-              style={{
-                textDecoration: t.completed ? "line-through" : "none",
-                cursor: "pointer",
-              }}
-            >
-              {t.text}
-            </span>
-            <button onClick={() => deleteTodo(t._id)}>x</button>
-          </li>
-        ))}
-      </ul>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-8 px-4">
+      <div className="max-w-5xl mx-auto">
+        <Header />
+        <StatsCards tasks={tasks} />
+        <FilterBar filter={filter} setFilter={setFilter} onAddTask={addTask} />
+        <TaskList
+          tasks={tasks}
+          filter={filter}
+          onToggle={toggleTask}
+          onDelete={deleteTask}
+          onEdit={editTask}
+        />
+      </div>
     </div>
   );
 }
-
-export default App;

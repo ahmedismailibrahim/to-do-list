@@ -70,7 +70,7 @@ This project is created to practice CRUD operations and understand how frontend 
 
 ## 🛠 Developer Workflow
 
-1.  Set up development environment :
+### Set up development environment :
 
         backend -->
             npm init -y
@@ -82,6 +82,7 @@ This project is created to practice CRUD operations and understand how frontend 
         frontend -->
             npx create-react-app name
             npm install axios react-router-dom
+            npm install bootstrap
                 "axios → HTTP requests to backend
                 react-router-dom → Routing & pages"
 
@@ -110,26 +111,76 @@ This project is created to practice CRUD operations and understand how frontend 
 
              git rm -r --cached client/node_modules server/node_modules // delete packages
 
-2.  Initialize backend project server (Node.js & Express) :
+### backend :
 
     -can using env-cmd insted of dotenv // and we'r using this bacause node can't  read .env or any files by itself
         npm i -g env-cmd
         "dev": "env-cmd -f .env nodemon app.js"
         npx run dev
 
-3.  Connect backend to MongoDB
+-Connect backend to MongoDB
+using mongodb compass and atlas
 
-        using mongodb compass and atlas 
+    -Create REST API endpoints and Test API using Postman
 
-4.  Create REST API endpoints
-     Test API using Postman 
+##### frontend :
 
-6.  Initialize React frontend
+- Build UI components
+  src/
+  ├── App.js # Main app component with state
+  └── components/
+  ├── Header.js # App title and subtitle
+  ├── StatsCards.js # Stats container
+  ├── StatCard.js # Individual stat card
+  ├── FilterBar.js # Filter buttons + Add button
+  ├── FilterButton.js # Individual filter button
+  ├── TaskList.js # Tasks container
+  ├── TaskItem.js # Individual task card
+  └── TaskModal.js # Unified modal for Add/Edit
 
-7.  Build UI components
+      // bootstrap setup it's prefer to use vite  //
+
+      # create project
+
+  npm create vite@latest my-app
+  cd my-app
+
+# install dependencies
+
+npm install
+
+# run dev server
+
+npm run dev
+
+# optional: add Tailwind
+
+npm install -D tailwindcss@3 postcss autoprefixer
+npx tailwindcss init -p
+///////// tailwind.config.js /////////
+/** @type {import('tailwindcss').Config} \*/
+export default {
+content: [
+"./index.html",
+"./src/**/\*.{js,ts,jsx,tsx}",
+],
+theme: {
+extend: {},
+},
+plugins: [],
+}
+
+/////// index.css ////
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+---
+
 8.  Connect frontend to backend APIs
 9.  Handle state and UI updates
 10. Test application functionality
+
 11. Commit code to Git
 12. Push project to GitHub
 

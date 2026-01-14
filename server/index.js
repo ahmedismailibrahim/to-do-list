@@ -24,11 +24,11 @@ mongoose.connect(
 ).then(() => {
   console.log('Connected to MongoDB');
 }).catch((err) => {
-  console.error('Error connecting to MongoDB',err);
+  console.error('Error connecting to MongoDB',err.message);
 }); 
 
 // routes (endpoints)
-app.use('/', require('./routes/todos'));
+app.use('/', require('./routes/todoroutes'));
   
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
