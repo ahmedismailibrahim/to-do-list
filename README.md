@@ -21,6 +21,7 @@ This project is created to practice CRUD operations and understand how frontend 
 - 🗑 Delete tasks
 - 📋 View all tasks
 - 🔄 Persistent data using MongoDB
+- counter all tasks / completed / pending
 
 ---
 
@@ -28,10 +29,10 @@ This project is created to practice CRUD operations and understand how frontend 
 
 ### Frontend
 
-- React
+- React / react +vite
 - JavaScript (ES6+)
 - Axios
-- CSS / Bootstrap (if used)
+- CSS / tailwind / Bootstrap
 
 ### Backend
 
@@ -48,7 +49,7 @@ This project is created to practice CRUD operations and understand how frontend 
 
 -Task categories
 
--Due dates
+-Due dates 'done'
 
 -Drag & drop tasks
 
@@ -113,81 +114,67 @@ This project is created to practice CRUD operations and understand how frontend 
 
 ### backend :
 
-    -can using env-cmd insted of dotenv // and we'r using this bacause node can't  read .env or any files by itself
+    -can using env-cmd insted of dotenv , and we'r using this bacause node can't  read .env or any files by itself.
+
         npm i -g env-cmd
         "dev": "env-cmd -f .env nodemon app.js"
         npx run dev
 
--Connect backend to MongoDB
-using mongodb compass and atlas
+    -Connect backend to MongoDB using mongodb compass and atlas.
 
     -Create REST API endpoints and Test API using Postman
 
-#################### frontend :
+### frontend :
 
-- Build UI components
+    - Build UI components
 
-  src/
-  ├── App.js # Main app component with state
-  └── components/
-  ├── Header.js # App title and subtitle
-  ├── StatsCards.js # Stats container
-  ├── StatCard.js # Individual stat card
-  ├── FilterBar.js # Filter buttons + Add button
-  ├── FilterButton.js # Individual filter button
-  ├── TaskList.js # Tasks container
-  ├── TaskItem.js # Individual task card
-  └── TaskModal.js # Unified modal for Add/Edit
+        src/
+        ├── App.js # Main app component with state
+        └── components/
+        ├── Header.js # App title and subtitle
+        ├── StatsCards.js # Stats container
+        ├── StatCard.js # Individual stat card
+        ├── FilterBar.js # Filter buttons + Add button
+        ├── FilterButton.js # Individual filter button
+        ├── TaskList.js # Tasks container
+        ├── TaskItem.js # Individual task card
+        └── TaskModal.js # Unified modal for Add/Edit
 
-      // taillwind setup it's prefer to use vite  //
+        - taillwind setup it's prefer to use vite
 
-      # create project
+            npm create vite@latest my-app
+            cd my-app
 
-  npm create vite@latest my-app
-  cd my-app
+            npm install -D tailwindcss@3 postcss autoprefixer
+            npx tailwindcss init -p
 
-# install dependencies
+            - tailwind.config.js :
 
-npm install
+                    export default {
+                    content: [
+                    "./index.html",
+                    "./src/**/\*.{js,ts,jsx,tsx}",
+                    ],
+                    theme: {
+                    extend: {},
+                    },
+                    plugins: [],
+                    }
 
-# run dev server
+            - index.css :
 
-npm run dev
+                    @tailwind base;
+                    @tailwind components;
+                    @tailwind utilities;
 
-# optional: add Tailwind
+---
 
-npm install -D tailwindcss@3 postcss autoprefixer
-npx tailwindcss init -p
+8.  Connect frontend to backend APIs 'done '
+9.  Handle state and UI updates 'done'
 
-///////// tailwind.config.js /////////
-
-// @type {import('tailwindcss').Config} 
-
-        export default {
-        content: [
-        "./index.html",
-        "./src/**/\*.{js,ts,jsx,tsx}",
-        ],
-        theme: {
-        extend: {},
-        },
-        plugins: [],
-        }
-
-/////// index.css ////
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
----------------------------------------------------
-
-8.  Connect frontend to backend APIs
-9.  Handle state and UI updates
 10. Test application functionality
 
-
-----------------------------------------------------
+---
 
 11. Commit code to Git
 12. Push project to GitHub

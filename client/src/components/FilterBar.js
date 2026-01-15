@@ -1,6 +1,5 @@
-import React from "react";
 import { useState } from "react";
-import { Plus } from "lucide-react";
+import { Plus } from "lucide-react"; 
 
 import FilterButton from "./FilterButton";
 import TaskModal from "./TaskModal";
@@ -10,15 +9,14 @@ function FilterBar({ filter, setFilter, onAddTask }) {
   const [showModal, setShowModal] = useState(false);
 
   const handleAddTask = (taskData) => {
-    const now = new Date().toLocaleDateString();
     onAddTask({
       ...taskData,
       completed: false,
-      createdAt: now,
-      updatedAt: now,
     });
+
     setShowModal(false);
   };
+
 
   return (
     <>

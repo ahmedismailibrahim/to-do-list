@@ -1,5 +1,4 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 // Individual Stat Card
 function StatCard({ number, label, color, bgColor }) {

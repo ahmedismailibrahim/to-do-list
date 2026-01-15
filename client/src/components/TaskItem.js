@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import { Edit2, Trash2, Check } from "lucide-react";
 import TaskModal from "./TaskModal";
@@ -7,11 +6,8 @@ import TaskModal from "./TaskModal";
 function TaskItem({ task, onToggle, onDelete, onEdit }) {
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleEdit = (updatedData) => {
-    onEdit(task._id, {
-      ...updatedData,
-      updatedAt: new Date().toLocaleDateString(),
-    });
+  const handleEdit = (updatedtask) => {
+    onEdit(task._id, { ...updatedtask });
     setIsEditing(false);
   };
 

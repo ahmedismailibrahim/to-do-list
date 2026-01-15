@@ -1,5 +1,3 @@
-import React from 'react';
-
 // filter Button Component
 function FilterButton({ active, onClick, children }) {
   return (

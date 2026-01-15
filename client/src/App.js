@@ -2,20 +2,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import FilterBar from "./components/FilterBar";
-import FiterButton from "./components/FilterButton";
 import Header from "./components/Header";
 import StatsCards from "./components/StatsCards";
-import StatCard from "./components/StatCard";
-import TaskItem from "./components/TaskItem";
 import TaskList from "./components/TaskList";
-import TaskModal from "./components/TaskModal";
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
 
   const [filter, setFilter] = useState("all");
 
-  // Fetch tasks from backend (mocked here) using axios
+  // Fetch tasks from backend using axios
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -33,7 +29,7 @@ export default function App() {
     try {
       const createTask = async () => {
         const response = await axios.post("http://localhost:5000/", task);
-        setTasks([...tasks, response.data]);
+        setTasks([response.data, ...tasks]);
       };
       createTask();
     } catch (error) {
@@ -45,6 +41,8 @@ export default function App() {
     try {
       const toggleTaskCompletion = async () => {
         const taskToToggle = tasks.find((task) => task._id === id);
+        if (!taskToToggle) return;
+
         const response = await axios.put(`http://localhost:5000/${id}`, {
           ...taskToToggle,
           completed: !taskToToggle.completed,

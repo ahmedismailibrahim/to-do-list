@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import { Plus, X } from "lucide-react";
 
@@ -42,7 +41,7 @@ function TaskModal({ mode = "add", task, onClose, onSave }) {
             placeholder="Task title..."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyPress}
             className="w-full bg-slate-700/50 text-white rounded-xl px-6 py-4 mb-5 border border-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder-gray-500 text-lg transition-all duration-200"
             autoFocus
           />
